@@ -59,6 +59,8 @@ app.post("/upload", (req, res) => {
          chunks.push(data)
       }).on('close', () => {
          console.log(`File [${name}] done`);
+      }).on('error', (err) => {
+         res.send({ err, status: 'error' });
       });
    });
 
